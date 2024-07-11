@@ -2270,6 +2270,7 @@ font-weight: bolder;
 
 }
 .quiz-info input[type="radio"] + label {
+  color:black !important ; 
   font-size: 20px;
   line-height: 25px;
   background-color: var(--color-info-dark);  
