@@ -468,35 +468,33 @@ const uploadHW = async (req, res) => {
 
 // ================== Ranking  ====================== //
 
-const ranking_get = async (req,res)=>{
+const ranking_get = async (req, res) => {
   try {
-
     const { searchInput } = req.query;
-    let perPage =20;
+    let perPage = 20;
     let page = req.query.page || 1;
-    
+
     if (searchInput) {
       // Find the student with the given Code
       const student = await User.findOne({ Code: searchInput }).exec();
-    
+
       // Find all students and sort them by totalScore
       const allStudents = await User.find({}, { Username: 1, Code: 1, totalScore: 1 })
-        .sort({ totalScore: -1 })
-    
+        .sort({ totalScore: -1 });
 
       // Find the index of the student in the sorted array
       const userRank = allStudents.findIndex(s => s.Code === +searchInput) + 1;
       console.log(userRank);
+      
       const paginatedStudents = await User.find({ Code: searchInput }, { Username: 1, Code: 1, totalScore: 1 })
-        .sort({ totalScore: -1 })
-    
-    
+        .sort({ totalScore: -1 });
+
       const count = await User.countDocuments({});
-    
+
       const nextPage = parseInt(page) + 1;
       const hasNextPage = nextPage <= Math.ceil(count / perPage);
       const hasPreviousPage = page > 1;
-    
+
       res.render("student/ranking", {
         title: "Ranking",
         path: req.path,
@@ -507,31 +505,38 @@ const ranking_get = async (req,res)=>{
         previousPage: hasPreviousPage ? page - 1 : null,
         userRank: userRank // Include user's rank in the response
       });
-    
+
+      return;
+    } else {
+      await User.find({}, { Username: 1, Code: 1, totalScore: 1 })
+        .sort({ totalScore: -1 })
+        .then(async (result) => {
+          const count = await User.countDocuments({});
+          const nextPage = parseInt(page) + 1;
+          const hasNextPage = nextPage <= Math.ceil(count / perPage);
+          const hasPreviousPage = page > 1;
+
+          res.render("student/ranking", {
+            title: "Ranking",
+            path: req.path,
+            userData: req.userData,
+            rankedUsers: result,
+            nextPage: hasNextPage ? nextPage : null,
+            previousPage: hasPreviousPage ? page - 1 : null,
+            userRank: null,
+            isSearching: false
+          });
+
+        }).catch((err) => {
+          console.log(err);
+        });
       return;
     }
-    
-    else{
-    await User.find({},{Username:1,Code:1,totalScore:1}).sort({ totalscore: -1 })  
- 
-    .then(async (result) => {
-      const count = await Code.countDocuments({});
-      const nextPage = parseInt(page) + 1;
-      const hasNextPage = nextPage <= Math.ceil(count / perPage);
-      const hasPreviousPage = page > 1;
-      
-      res.render("student/ranking", { title: "Ranking", path: req.path, userData: req.userData ,rankedUsers :result , nextPage: hasNextPage ? nextPage : null, previousPage: hasPreviousPage ? page - 1 : null,  userRank: null ,isSearching : false});
-
-    }).catch((err)=>{
-      console.log(err)
-    })
-    return
-  }
   } catch (error) {
-    console.log()
+    console.log(error);
   }
-  
-}
+};
+
 
 // ================== END Ranking  ====================== //
 
