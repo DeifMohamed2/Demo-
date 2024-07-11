@@ -761,7 +761,7 @@ const quizFinish = async(req,res)=>{
           'quizesInfo.$.solvedAt':  Date.now(),
           'quizesInfo.$.endTime': 0
         },
-        $inc: {"totalScore": +score , "totalQuestions": +quiz.questionsCount} 
+        $inc: {"totalScore": +score , "totalQuestions": +quiz.questionsCount,'examsEnterd': 1} 
       }
     ).then(async (result) => {
     
