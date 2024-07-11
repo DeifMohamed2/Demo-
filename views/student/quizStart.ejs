@@ -472,19 +472,19 @@ async function updateQuestion() {
     <img src="${question.questionPhoto}" >
     </div>
     <h1 class="questionSec" id="titleOfQuestion">${question.title}</h1>
-    <input type="radio" name="answer" class="RD form-check-input" value="1" id="answer1" ${answers[qNumber] === 1 ? "checked" : ""}><label for="answer1" class="text">${await question.answer1}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="2" id="answer2" ${answers[qNumber] === 2 ? "checked" : ""}><label for="answer2" class="text">${await question.answer2}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="3" id="answer3" ${answers[qNumber] === 3 ? "checked" : ""}><label for="answer3" class="text">${await question.answer3}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="4" id="answer4" ${answers[qNumber] === 4 ? "checked" : ""}><label for="answer4" class="text">${await question.answer4}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="1" id="answer1" ${answers[qNumber] === 1 ? "checked" : ""}><label for="answer1" class="text">${await question.answer1}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="2" id="answer2" ${answers[qNumber] === 2 ? "checked" : ""}><label for="answer2" class="text">${await question.answer2}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="3" id="answer3" ${answers[qNumber] === 3 ? "checked" : ""}><label for="answer3" class="text">${await question.answer3}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="4" id="answer4" ${answers[qNumber] === 4 ? "checked" : ""}><label for="answer4" class="text">${await question.answer4}</label><br/>
       `;
     }else{
       questionSec.innerHTML = `
 
     <h1 class="questionSec" id="titleOfQuestion">${question.title}</h1>
-    <input type="radio" name="answer" class="RD form-check-input" value="1" id="answer1" ${answers[qNumber] === 1 ? "checked" : ""}><label for="answer1" class="text">${await question.answer1}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="2" id="answer2" ${answers[qNumber] === 2 ? "checked" : ""}><label for="answer2" class="text">${await question.answer2}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="3" id="answer3" ${answers[qNumber] === 3 ? "checked" : ""}><label for="answer3" class="text">${await question.answer3}</label><br/>
-    <input type="radio" name="answer" class="RD form-check-input" value="4" id="answer4" ${answers[qNumber] === 4 ? "checked" : ""}><label for="answer4" class="text">${await question.answer4}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="1" id="answer1" ${answers[qNumber] === 1 ? "checked" : ""}><label for="answer1" class="text">${await question.answer1}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="2" id="answer2" ${answers[qNumber] === 2 ? "checked" : ""}><label for="answer2" class="text">${await question.answer2}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="3" id="answer3" ${answers[qNumber] === 3 ? "checked" : ""}><label for="answer3" class="text">${await question.answer3}</label><br/>
+    <input type="radio" name="answer" class="RD text-dark form-check-input" value="4" id="answer4" ${answers[qNumber] === 4 ? "checked" : ""}><label for="answer4" class="text">${await question.answer4}</label><br/>
       `;
     }
       
