@@ -150,7 +150,7 @@
   .quiz-info input[type="radio"] + label {
     font-size: 20px;
     line-height: 25px;
-    color:black;
+    color:black !important;
     background-color: var(--color-info-dark);  
     border-radius: var(--border-radius-1);
     padding: 0.8rem;
