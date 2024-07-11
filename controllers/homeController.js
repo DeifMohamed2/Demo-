@@ -194,6 +194,7 @@ const public_Register_post = async (req, res) => {
       chaptersPaid:[],
       videosPaid: [],
       examsPaid: [],
+      userPhoto : gender == 'male'  ?   'https://firebasestorage.googleapis.com/v0/b/nodejs-d65ef.appspot.com/o/dddd.webp?alt=media&token=9d1f6eb1-96ef-4342-b94f-19acc5acb0d8' : '' ,
       // Add other fields as needed
     });
     user
