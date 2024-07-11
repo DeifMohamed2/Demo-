@@ -29,10 +29,10 @@ const path = require('path');
 
 // CONECT to mongodb df
 let io
-const dbURI = 'mongodb+srv://3devWay:1qaz2wsx@cluster0.5orkagp.mongodb.net/DrAhmadOmar?retryWrites=true&w=majority&appName=Cluster0'
+const dbURI = 'mongodb+srv://3devWay:1qaz2wsx@cluster0.5orkagp.mongodb.net/Demo?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
-        let server = app.listen(5000);
+        let server = app.listen(8880);
 
         io = socketio(server)
         io.on('connection', (socket) => {
